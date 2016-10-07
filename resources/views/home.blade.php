@@ -31,14 +31,65 @@
                     </div>
 
                     <div class="title">
+                        <h4>Title</h4>
                         <label for="title[size]">Size</label>
                         <input type="number" min="1" max="20" name="title[size]" value="20">
 
                         <label for="title[bold]">Bold</label>
-                        <input type="checkbox" name="title[bold]" value="true" checked="checked">
+                        <input type="checkbox" name="title[bold]" checked="checked">
 
                         <label for="title[color]">Color</label>
-                        <input type="text" name="title[color]" value="00000">
+                        <input type="text" name="title[color]" value="000000">
+                    </div>
+
+                    <div class="header">
+                        <h4>Header</h4>
+                        <label for="header[size]">Size</label>
+                        <input type="number" min="1" max="14" name="header[size]" value="14">
+
+                        <label for="header[bold]">Bold</label>
+                        <input type="checkbox" name="header[bold]" checked>
+
+                        <label for="header[color]">Color</label>
+                        <input type="text" name="header[color]" value="424242">
+
+                        <br>
+                        <label for="header[align]">Alignment</label>
+                        <select name="header[align]">
+                            <option value="center" selected>center</option>
+                            <option value="left">left</option>
+                            <option value="right">right</option>
+                        </select>
+
+                        <label for="header[bgColor]">Background color</label>
+                        <input type="text" name="header[bgColor]" value="cccccc">
+
+                        <br>
+                        <label for="header[dayFormat]">Day label</label>
+                        <select name="header[dayFormat]">
+                            <option value="oneLetter">One letter</option>
+                            <option value="short">Short</option>
+                            <option value="full" selected>Full</option>
+                        </select>
+                    </div>
+
+                    <div class="weekday">
+                        <h4>Days</h4>
+                        <label for="weekday[size]">Size</label>
+                        <input type="number" min="1" max="11" name="weekday[size]" value="11">
+
+                        <label for="weekday[align]">Alignment</label>
+                        <select name="weekday[align]">
+                            <option value="center">center</option>
+                            <option value="left">left</option>
+                            <option value="right" selected>right</option>
+                        </select>
+
+                        <label for="weekcell[bgColor]">Background color</label>
+                        <input type="text" name="weekcell[bgColor]" value="ffffff">
+
+                        <label for="weekendday[bgColor]">Weekends bgColor</label>
+                        <input type="text" name="weekendday[bgColor]" value="eaeaea">
                     </div>
                 </div>
 

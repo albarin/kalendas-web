@@ -59,6 +59,106 @@ class CalendarController extends Controller
 
     private function setCustomStyles(OoxmlWriterConfiguration $config, Request $request)
     {
-        $config->setTitleStyle($request->get('title'));
+        $this->setTitleStyles($config, $request);
+        $this->setHeaderStyles($config, $request);
+        $this->setWeekDayStyles($config, $request);
+        $this->setWeekCellStyles($config, $request);
+        $this->setWeekendCellStyles($config, $request);
+        $this->setDayFormat($config, $request);
+    }
+
+    /**
+     * @param OoxmlWriterConfiguration $config
+     * @param Request $request
+     */
+    private function setTitleStyles(OoxmlWriterConfiguration $config, Request $request)
+    {
+        $styles = [
+            'size' => (int) $request->input('title.size'),
+            'bold' => (bool) $request->input('title.bold', false),
+            'color' => $request->input('title.color'),
+        ];
+
+        if ($config->titleStyles() !== $styles) {
+            $config->setTitleStyle($styles);
+        }
+    }
+
+    /**
+     * @param OoxmlWriterConfiguration $config
+     * @param Request $request
+     */
+    private function setHeaderStyles(OoxmlWriterConfiguration $config, Request $request)
+    {
+        $styles = [
+            'size' => (int) $request->input('header.size'),
+            'bold' => (bool) $request->input('header.bold', false),
+            'color' => $request->input('header.color'),
+            'align' => $request->input('header.align'),
+            'bgColor' => $request->input('header.bgColor'),
+        ];
+
+        if ($config->headerStyles() !== $styles) {
+            $config->setHeaderStyle($styles);
+        }
+    }
+
+    /**
+     * @param OoxmlWriterConfiguration $config
+     * @param Request $request
+     */
+    private function setWeekDayStyles(OoxmlWriterConfiguration $config, Request $request)
+    {
+        $styles = [
+            'align' => $request->input('weekday.align'),
+            'size' => (int) $request->input('weekday.size'),
+        ];
+
+        if ($config->weekDayStyle() !== $styles) {
+            $config->setWeekDayStyle($styles);
+        }
+    }
+
+    /**
+     * @param OoxmlWriterConfiguration $config
+     * @param Request $request
+     */
+    private function setWeekCellStyles(OoxmlWriterConfiguration $config, Request $request)
+    {
+        $styles = [
+            'bgColor' => $request->input('weekcell.bgColor'),
+        ];
+
+        if ($config->weekCellStyle() !== $styles) {
+            $config->setWeekCellStyle($styles);
+        }
+    }
+
+    /**
+     * @param OoxmlWriterConfiguration $config
+     * @param Request $request
+     */
+    private function setWeekendCellStyles(OoxmlWriterConfiguration $config, Request $request)
+    {
+        $styles = [
+            'bgColor' => $request->input('weekendday.bgColor'),
+        ];
+
+        if ($config->weekendCellStyle() !== $styles) {
+            $config->setWeekendCellStyle($styles);
+        }
+    }
+
+    /**
+     * @param OoxmlWriterConfiguration $config
+     * @param Request $request
+     */
+    private function setDayFormat(OoxmlWriterConfiguration $config, Request $request)
+    {
+        $dayFormat = $request->input('header.dayFormat');
+
+        if ($config->dayFormat() !== $dayFormat) {
+            $config->setDayFormat($dayFormat);
+        }
     }
 }
