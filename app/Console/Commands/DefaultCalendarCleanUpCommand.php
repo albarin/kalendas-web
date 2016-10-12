@@ -19,7 +19,7 @@ class DefaultCalendarCleanUpCommand extends Command
         $pastYear = Carbon::today()->subYear()->year;
 
         $defaultCalendars = File::glob(
-            storage_path('app/public/calendars') . "/*-$pastYear.docx"
+            calendars_path() . "/*-$pastYear.docx"
         );
 
         File::delete($defaultCalendars);

@@ -55,7 +55,7 @@ class CalendarController extends Controller
             $filename .= '-' . uniqid();
         }
 
-        $config->setFilename(storage_path('app/public/calendars') . "/$filename.docx");
+        $config->setFilename(calendars_path() . "/$filename.docx");
     }
 
     private function setCustomStyles(OoxmlWriterConfiguration $config, Request $request)

@@ -16,7 +16,7 @@ class CustomCalendarCleanUpCommand extends Command
     public function fire()
     {
         $customCalendars = File::glob(
-            storage_path('app/public/calendars') . '/*-*-*.docx'
+            calendars_path() . '/*-*-*.docx'
         );
 
         File::delete($customCalendars);
