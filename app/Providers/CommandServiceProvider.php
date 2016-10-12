@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Console\Commands\CalendarCleanUpCommand;
+use App\Console\Commands\CustomCalendarCleanUpCommand;
 use Illuminate\Support\ServiceProvider;
 
 class CommandServiceProvider extends ServiceProvider
@@ -11,7 +11,7 @@ class CommandServiceProvider extends ServiceProvider
     {
         $this->app->singleton('command.calendar.clean-up', function()
         {
-            return new CalendarCleanUpCommand;
+            return new CustomCalendarCleanUpCommand;
         });
 
         $this->commands(
