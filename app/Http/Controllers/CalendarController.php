@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class CalendarController extends Controller
 {
+
     public function home()
     {
         return view('home');
@@ -32,7 +33,7 @@ class CalendarController extends Controller
 
         $this->setFilename($config, $date);
 
-        $path = base_path() . '/public/' . $writer->filename();
+        $path = $writer->filename();
         if (file_exists($path)) {
             return response()->download($path);
         }
@@ -54,7 +55,7 @@ class CalendarController extends Controller
             $filename .= '-' . uniqid();
         }
 
-        $config->setFilename("$filename.docx");
+        $config->setFilename(storage_path('app/public/calendars') . "/$filename.docx");
     }
 
     private function setCustomStyles(OoxmlWriterConfiguration $config, Request $request)
