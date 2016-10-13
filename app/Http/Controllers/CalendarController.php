@@ -29,7 +29,7 @@ class CalendarController extends Controller
         $generator = new Generator($writer);
 
         $date = Carbon::parse($request->get('date'));
-        $this->setCustomStyles($config, $request);
+        //$this->setCustomStyles($config, $request);
 
         $this->setFilename($config, $date);
 
